@@ -1,0 +1,1146 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Confeiteiras Parceiras</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #fff5f7;
+    margin: 0;
+    padding: 30px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #c45c7a;
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.acoes {
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.busca input {
+    width: 350px;
+    max-width: 90%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn-whatsapp:hover {
+    background: #1ebd59;
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp:active {
+    transform: translateY(0);
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    width: 280px;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: #b24d6b;
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.botao {
+    display: inline-block;
+    margin-top: 15px;
+    background: #d86b8c;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.botao:hover {
+    background: #c45c7a;
+}
+
+.sem-resultados {
+    text-align: center;
+    color: #777;
+    margin-top: 30px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>🍰 Confeiteiras Parceiras</h1>
+    <div class="subtitulo">
+        Catálogo de clientes do Instagram
+    </div>
+</header>
+
+<div class="acoes">
+    <div class="busca">
+        <input
+            type="text"
+            id="pesquisa"
+            placeholder="🔍 Buscar por nome ou Instagram..."
+            onkeyup="filtrar()"
+        >
+    </div>
+    <button class="btn-whatsapp" onclick="copiarListaWhatsApp()">
+        📋 Copiar Lista para WhatsApp
+    </button>
+</div>
+
+<div class="container" id="cards">
+    
+        <div class="card" data-nome="Adriana Jordão" data-insta="@drikajordao" data-search="adriana jordão drikajordao">
+            <h2>🧁 Adriana Jordão</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @drikajordao
+            </p>
+
+            <a href="https://www.instagram.com/drikajordao" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Adriana Suvobida Nascimento" data-insta="@deliciada_driika" data-search="adriana suvobida nascimento deliciada_driika">
+            <h2>🧁 Adriana Suvobida Nascimento</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @deliciada_driika
+            </p>
+
+            <a href="https://www.instagram.com/deliciada_driika/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Agnes Letícia Graziano" data-insta="@alegracookiesecakes" data-search="agnes letícia graziano alegracookiesecakes">
+            <h2>🧁 Agnes Letícia Graziano</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @alegracookiesecakes
+            </p>
+
+            <a href="https://www.instagram.com/alegracookiesecakes" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Ana Maria Lara da Silva Cebulla" data-insta="@biscoitos.coloridos" data-search="ana maria lara da silva cebulla biscoitos.coloridos">
+            <h2>🧁 Ana Maria Lara da Silva Cebulla</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @biscoitos.coloridos
+            </p>
+
+            <a href="https://www.instagram.com/biscoitos.coloridos" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Ana Paula Cruz Machado" data-insta="@docevidabiscoitaria" data-search="ana paula cruz machado docevidabiscoitaria">
+            <h2>🧁 Ana Paula Cruz Machado</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @docevidabiscoitaria
+            </p>
+
+            <a href="https://www.instagram.com/docevidabiscoitaria" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Anahy de Farias Pereira" data-insta="@balademanteiga" data-search="anahy de farias pereira balademanteiga">
+            <h2>🧁 Anahy de Farias Pereira</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @balademanteiga
+            </p>
+
+            <a href="https://www.instagram.com/balademanteiga" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Andréa Sanches" data-insta="@docuradebiscoito" data-search="andréa sanches docuradebiscoito">
+            <h2>🧁 Andréa Sanches</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @docuradebiscoito
+            </p>
+
+            <a href="https://www.instagram.com/docuradebiscoito/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Angela Maria Hugentobler" data-insta="@angelabiscoitos" data-search="angela maria hugentobler angelabiscoitos">
+            <h2>🧁 Angela Maria Hugentobler</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @angelabiscoitos
+            </p>
+
+            <a href="https://www.instagram.com/angelabiscoitos" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Antonella Sartori" data-insta="@cookiesbyanto" data-search="antonella sartori cookiesbyanto">
+            <h2>🧁 Antonella Sartori</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @cookiesbyanto
+            </p>
+
+            <a href="https://www.instagram.com/cookiesbyanto/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Bete Martins" data-insta="@cupcakemariacozinha" data-search="bete martins cupcakemariacozinha">
+            <h2>🧁 Bete Martins</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @cupcakemariacozinha
+            </p>
+
+            <a href="https://www.instagram.com/cupcakemariacozinha/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Carina Mazucato" data-insta="@mazucookies.br" data-search="carina mazucato mazucookies.br">
+            <h2>🧁 Carina Mazucato</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @mazucookies.br
+            </p>
+
+            <a href="https://www.instagram.com/mazucookies.br/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Carla Correa" data-insta="@biscoiteriacarlacorrea" data-search="carla correa biscoiteriacarlacorrea">
+            <h2>🧁 Carla Correa</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @biscoiteriacarlacorrea
+            </p>
+
+            <a href="https://www.instagram.com/biscoiteriacarlacorrea/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Carla Cristina da Cruz Gouveia" data-insta="@carlabiscoitosdecorados" data-search="carla cristina da cruz gouveia carlabiscoitosdecorados">
+            <h2>🧁 Carla Cristina da Cruz Gouveia</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @carlabiscoitosdecorados
+            </p>
+
+            <a href="https://www.instagram.com/carlabiscoitosdecorados" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Carol Campos" data-insta="@carolitasbiscoiteria" data-search="carol campos carolitasbiscoiteria">
+            <h2>🧁 Carol Campos</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @carolitasbiscoiteria
+            </p>
+
+            <a href="https://www.instagram.com/carolitasbiscoiteria/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Chris Rached" data-insta="@afetoedocurasjc" data-search="chris rached afetoedocurasjc">
+            <h2>🧁 Chris Rached</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @afetoedocurasjc
+            </p>
+
+            <a href="https://www.instagram.com/afetoedocurasjc" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Cintia Moraes" data-insta="@smcdoces" data-search="cintia moraes smcdoces">
+            <h2>🧁 Cintia Moraes</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @smcdoces
+            </p>
+
+            <a href="https://www.instagram.com/smcdoces" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Daiane Petreca" data-insta="@daianepetreca" data-search="daiane petreca daianepetreca">
+            <h2>🧁 Daiane Petreca</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @daianepetreca
+            </p>
+
+            <a href="https://www.instagram.com/daianepetreca" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Dani Alvarenga André" data-insta="@niceedaniconfeitariaartesanal" data-search="dani alvarenga andré niceedaniconfeitariaartesanal">
+            <h2>🧁 Dani Alvarenga André</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @niceedaniconfeitariaartesanal
+            </p>
+
+            <a href="https://www.instagram.com/niceedaniconfeitariaartesanal/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Daniela Haller" data-insta="@danihaller.atelie" data-search="daniela haller danihaller.atelie">
+            <h2>🧁 Daniela Haller</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @danihaller.atelie
+            </p>
+
+            <a href="https://www.instagram.com/danihaller.atelie/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Denise Choairy" data-insta="@dolcealfajorhomemade" data-search="denise choairy dolcealfajorhomemade">
+            <h2>🧁 Denise Choairy</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @dolcealfajorhomemade
+            </p>
+
+            <a href="https://www.instagram.com/dolcealfajorhomemade/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Elaine Laet" data-insta="@biscoiteiraelainelaet" data-search="elaine laet biscoiteiraelainelaet">
+            <h2>🧁 Elaine Laet</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @biscoiteiraelainelaet
+            </p>
+
+            <a href="https://www.instagram.com/biscoiteiraelainelaet" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Eliana Pereira de Lima" data-insta="@EPLDocesArtesanais" data-search="eliana pereira de lima epldocesartesanais">
+            <h2>🧁 Eliana Pereira de Lima</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @EPLDocesArtesanais
+            </p>
+
+            <a href="https://www.instagram.com/EPLDocesArtesanais" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Eliane Catapan" data-insta="@elianecatapan" data-search="eliane catapan elianecatapan">
+            <h2>🧁 Eliane Catapan</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @elianecatapan
+            </p>
+
+            <a href="https://www.instagram.com/elianecatapan/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Elizangela Euzébio" data-insta="@eliz.cookier" data-search="elizangela euzébio eliz.cookier">
+            <h2>🧁 Elizangela Euzébio</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @eliz.cookier
+            </p>
+
+            <a href="https://www.instagram.com/eliz.cookier" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Evandra Auxiliadora de Oliveira" data-insta="@confestgyn" data-search="evandra auxiliadora de oliveira confestgyn">
+            <h2>🧁 Evandra Auxiliadora de Oliveira</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @confestgyn
+            </p>
+
+            <a href="https://www.instagram.com/confestgyn" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Evelyn Oliveira" data-insta="@evelynxoliveira" data-search="evelyn oliveira evelynxoliveira">
+            <h2>🧁 Evelyn Oliveira</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @evelynxoliveira
+            </p>
+
+            <a href="https://www.instagram.com/evelynxoliveira" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Fernanda Vargas" data-insta="@celebrarbiscoitosdecorados" data-search="fernanda vargas celebrarbiscoitosdecorados">
+            <h2>🧁 Fernanda Vargas</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @celebrarbiscoitosdecorados
+            </p>
+
+            <a href="https://www.instagram.com/celebrarbiscoitosdecorados" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Gabriela Cristina Campos de Souza" data-insta="@maricotinha.biscoitos" data-search="gabriela cristina campos de souza maricotinha.biscoitos">
+            <h2>🧁 Gabriela Cristina Campos de Souza</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @maricotinha.biscoitos
+            </p>
+
+            <a href="https://www.instagram.com/maricotinha.biscoitos/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Gracieli Sanches" data-insta="@gracielisanches" data-search="gracieli sanches gracielisanches">
+            <h2>🧁 Gracieli Sanches</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @gracielisanches
+            </p>
+
+            <a href="https://www.instagram.com/gracielisanches/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Graça Cesarotto" data-insta="@graca_cookier_glutenfree" data-search="graça cesarotto graca_cookier_glutenfree">
+            <h2>🧁 Graça Cesarotto</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @graca_cookier_glutenfree
+            </p>
+
+            <a href="https://www.instagram.com/graca_cookier_glutenfree/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Iolanda Boff" data-insta="@fadinhabiscoiteria" data-search="iolanda boff fadinhabiscoiteria">
+            <h2>🧁 Iolanda Boff</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @fadinhabiscoiteria
+            </p>
+
+            <a href="https://www.instagram.com/fadinhabiscoiteria" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Ivany Kumeda" data-insta="@ivanykumeda" data-search="ivany kumeda ivanykumeda">
+            <h2>🧁 Ivany Kumeda</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @ivanykumeda
+            </p>
+
+            <a href="https://www.instagram.com/ivanykumeda/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Josinéia Nóbrega" data-insta="@josineia_nobrega" data-search="josinéia nóbrega josineia_nobrega">
+            <h2>🧁 Josinéia Nóbrega</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @josineia_nobrega
+            </p>
+
+            <a href="https://www.instagram.com/josineia_nobrega/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Joyce Piratello Pansutti Zoppi" data-insta="@joycookieoficial" data-search="joyce piratello pansutti zoppi joycookieoficial">
+            <h2>🧁 Joyce Piratello Pansutti Zoppi</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @joycookieoficial
+            </p>
+
+            <a href="https://www.instagram.com/joycookieoficial" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Joziane Fagundes da Silva" data-insta="@fornodevo_biscoitos" data-search="joziane fagundes da silva fornodevo_biscoitos">
+            <h2>🧁 Joziane Fagundes da Silva</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @fornodevo_biscoitos
+            </p>
+
+            <a href="https://www.instagram.com/fornodevo_biscoitos" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Juliana Alves" data-insta="@ajucarado" data-search="juliana alves ajucarado">
+            <h2>🧁 Juliana Alves</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @ajucarado
+            </p>
+
+            <a href="https://www.instagram.com/ajucarado" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Juliana Buzzeiro Pelosi" data-insta="@bisc8daju" data-search="juliana buzzeiro pelosi bisc8daju">
+            <h2>🧁 Juliana Buzzeiro Pelosi</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @bisc8daju
+            </p>
+
+            <a href="https://www.instagram.com/bisc8daju" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Jéssica Nascimento" data-insta="@doce_margariida" data-search="jéssica nascimento doce_margariida">
+            <h2>🧁 Jéssica Nascimento</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @doce_margariida
+            </p>
+
+            <a href="https://www.instagram.com/doce_margariida/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Katia Dantas" data-insta="@meusamoresconfeitaria" data-search="katia dantas meusamoresconfeitaria">
+            <h2>🧁 Katia Dantas</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @meusamoresconfeitaria
+            </p>
+
+            <a href="https://www.instagram.com/meusamoresconfeitaria" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Lilliam Maria de Almeida" data-insta="@meubiscoitinho.artesanal" data-search="lilliam maria de almeida meubiscoitinho.artesanal">
+            <h2>🧁 Lilliam Maria de Almeida</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @meubiscoitinho.artesanal
+            </p>
+
+            <a href="https://www.instagram.com/meubiscoitinho.artesanal" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Lucia Lopes" data-insta="@lulopesdoces" data-search="lucia lopes lulopesdoces">
+            <h2>🧁 Lucia Lopes</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @lulopesdoces
+            </p>
+
+            <a href="https://www.instagram.com/lulopesdoces/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Lucilene Borges" data-insta="@biscoitosnininha" data-search="lucilene borges biscoitosnininha">
+            <h2>🧁 Lucilene Borges</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @biscoitosnininha
+            </p>
+
+            <a href="https://www.instagram.com/biscoitosnininha" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Marcia Donini" data-insta="@bolachasdamarcia" data-search="marcia donini bolachasdamarcia">
+            <h2>🧁 Marcia Donini</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @bolachasdamarcia
+            </p>
+
+            <a href="https://www.instagram.com/bolachasdamarcia/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Maria Aparecida de Souza Teixeira" data-insta="@souzateixeir" data-search="maria aparecida de souza teixeira souzateixeir">
+            <h2>🧁 Maria Aparecida de Souza Teixeira</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @souzateixeir
+            </p>
+
+            <a href="https://www.instagram.com/souzateixeir" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Maria de Fátima Alves Ferreira" data-insta="@deliciasdafatima" data-search="maria de fátima alves ferreira deliciasdafatima">
+            <h2>🧁 Maria de Fátima Alves Ferreira</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @deliciasdafatima
+            </p>
+
+            <a href="https://www.instagram.com/deliciasdafatima" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Maria do Perpétuo Socorro Braga Fonseca" data-insta="@manudorabiscoitos" data-search="maria do perpétuo socorro braga fonseca manudorabiscoitos">
+            <h2>🧁 Maria do Perpétuo Socorro Braga Fonseca</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @manudorabiscoitos
+            </p>
+
+            <a href="https://www.instagram.com/manudorabiscoitos" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Maria Elisa Mazer" data-insta="@mali_confeitaria" data-search="maria elisa mazer mali_confeitaria">
+            <h2>🧁 Maria Elisa Mazer</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @mali_confeitaria
+            </p>
+
+            <a href="https://www.instagram.com/mali_confeitaria" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Maria Iracema de Souza Mendonça" data-insta="@docesdairacema" data-search="maria iracema de souza mendonça docesdairacema">
+            <h2>🧁 Maria Iracema de Souza Mendonça</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @docesdairacema
+            </p>
+
+            <a href="https://www.instagram.com/docesdairacema" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Mariana B. A. Pessoa" data-insta="@derepentebiscoito" data-search="mariana b. a. pessoa derepentebiscoito">
+            <h2>🧁 Mariana B. A. Pessoa</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @derepentebiscoito
+            </p>
+
+            <a href="https://www.instagram.com/derepentebiscoito" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Mariana Bellini" data-insta="@amare.biscoitos" data-search="mariana bellini amare.biscoitos">
+            <h2>🧁 Mariana Bellini</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @amare.biscoitos
+            </p>
+
+            <a href="https://www.instagram.com/amare.biscoitos/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Marilene Almeida Bueno" data-insta="@marilenebuenodoces" data-search="marilene almeida bueno marilenebuenodoces">
+            <h2>🧁 Marilene Almeida Bueno</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @marilenebuenodoces
+            </p>
+
+            <a href="https://www.instagram.com/marilenebuenodoces" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Marli Inês Minosso" data-insta="@bolachas_decoradas_marli" data-search="marli inês minosso bolachas_decoradas_marli">
+            <h2>🧁 Marli Inês Minosso</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @bolachas_decoradas_marli
+            </p>
+
+            <a href="https://www.instagram.com/bolachas_decoradas_marli" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Monique Oliveira Pires" data-insta="@moniqueoliveira.cakedesigner" data-search="monique oliveira pires moniqueoliveira.cakedesigner">
+            <h2>🧁 Monique Oliveira Pires</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @moniqueoliveira.cakedesigner
+            </p>
+
+            <a href="https://www.instagram.com/moniqueoliveira.cakedesigner/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Méril Micheline Schmitt" data-insta="@merilschmitt" data-search="méril micheline schmitt merilschmitt">
+            <h2>🧁 Méril Micheline Schmitt</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @merilschmitt
+            </p>
+
+            <a href="https://www.instagram.com/merilschmitt/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Nivea Ramalho" data-insta="@simplesdesejochocoficial" data-search="nivea ramalho simplesdesejochocoficial">
+            <h2>🧁 Nivea Ramalho</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @simplesdesejochocoficial
+            </p>
+
+            <a href="https://www.instagram.com/simplesdesejochocoficial/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Odalea Alcina Ferreira Rizzuti" data-insta="@presentesdecomerjf" data-search="odalea alcina ferreira rizzuti presentesdecomerjf">
+            <h2>🧁 Odalea Alcina Ferreira Rizzuti</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @presentesdecomerjf
+            </p>
+
+            <a href="https://www.instagram.com/presentesdecomerjf" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Patricia Turetti" data-insta="@patricia_turetti" data-search="patricia turetti patricia_turetti">
+            <h2>🧁 Patricia Turetti</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @patricia_turetti
+            </p>
+
+            <a href="https://www.instagram.com/patricia_turetti/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Paula" data-insta="@hallmarkbiscoiteria" data-search="paula hallmarkbiscoiteria">
+            <h2>🧁 Paula</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @hallmarkbiscoiteria
+            </p>
+
+            <a href="https://www.instagram.com/hallmarkbiscoiteria/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Priscila Sochor" data-insta="@atelie_sochor" data-search="priscila sochor atelie_sochor">
+            <h2>🧁 Priscila Sochor</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @atelie_sochor
+            </p>
+
+            <a href="https://www.instagram.com/atelie_sochor/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Rachel Macedo" data-insta="@quetalbiscoitos" data-search="rachel macedo quetalbiscoitos">
+            <h2>🧁 Rachel Macedo</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @quetalbiscoitos
+            </p>
+
+            <a href="https://www.instagram.com/quetalbiscoitos" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Rejane Miranda" data-insta="@biscoitosdarebh" data-search="rejane miranda biscoitosdarebh">
+            <h2>🧁 Rejane Miranda</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @biscoitosdarebh
+            </p>
+
+            <a href="https://www.instagram.com/biscoitosdarebh/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Rosana Brito" data-insta="@delicadezasdaro" data-search="rosana brito delicadezasdaro">
+            <h2>🧁 Rosana Brito</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @delicadezasdaro
+            </p>
+
+            <a href="https://www.instagram.com/delicadezasdaro" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Rosana Daro" data-insta="@beijosdocesconfeitariadaro" data-search="rosana daro beijosdocesconfeitariadaro">
+            <h2>🧁 Rosana Daro</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @beijosdocesconfeitariadaro
+            </p>
+
+            <a href="https://www.instagram.com/beijosdocesconfeitariadaro" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Rosangela Sant'Anna" data-insta="@robiscoiteria" data-search="rosangela sant'anna robiscoiteria">
+            <h2>🧁 Rosangela Sant'Anna</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @robiscoiteria
+            </p>
+
+            <a href="https://www.instagram.com/robiscoiteria" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Rosângela Lima" data-insta="@biscoitosdossonhos" data-search="rosângela lima biscoitosdossonhos">
+            <h2>🧁 Rosângela Lima</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @biscoitosdossonhos
+            </p>
+
+            <a href="https://www.instagram.com/biscoitosdossonhos" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Rozana de Mello Pinto" data-insta="@biscoiterapiadanana" data-search="rozana de mello pinto biscoiterapiadanana">
+            <h2>🧁 Rozana de Mello Pinto</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @biscoiterapiadanana
+            </p>
+
+            <a href="https://www.instagram.com/biscoiterapiadanana/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Silmara C Brandi" data-insta="@maniasdebiscoitos" data-search="silmara c brandi maniasdebiscoitos">
+            <h2>🧁 Silmara C Brandi</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @maniasdebiscoitos
+            </p>
+
+            <a href="https://www.instagram.com/maniasdebiscoitos" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Simone Morais da Silva" data-insta="@bolosdeliciasdabibi" data-search="simone morais da silva bolosdeliciasdabibi">
+            <h2>🧁 Simone Morais da Silva</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @bolosdeliciasdabibi
+            </p>
+
+            <a href="https://www.instagram.com/bolosdeliciasdabibi/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Tatiana Morais" data-insta="@biscoitathi" data-search="tatiana morais biscoitathi">
+            <h2>🧁 Tatiana Morais</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @biscoitathi
+            </p>
+
+            <a href="https://www.instagram.com/biscoitathi" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Tatiane Lima" data-insta="@tati_lima_gourmet" data-search="tatiane lima tati_lima_gourmet">
+            <h2>🧁 Tatiane Lima</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @tati_lima_gourmet
+            </p>
+
+            <a href="https://www.instagram.com/tati_lima_gourmet/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Telma Claudia de Campos Godoy" data-insta="@nhaconstanca_doces" data-search="telma claudia de campos godoy nhaconstanca_doces">
+            <h2>🧁 Telma Claudia de Campos Godoy</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @nhaconstanca_doces
+            </p>
+
+            <a href="https://www.instagram.com/nhaconstanca_doces" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+        <div class="card" data-nome="Viviane Casarotti" data-insta="@vivisbiscoitos" data-search="viviane casarotti vivisbiscoitos">
+            <h2>🧁 Viviane Casarotti</h2>
+
+            <p>
+                <strong>Instagram:</strong>
+                @vivisbiscoitos
+            </p>
+
+            <a href="https://www.instagram.com/vivisbiscoitos/" target="_blank" class="botao">
+                Abrir Instagram
+            </a>
+        </div>
+        
+</div>
+
+<p class="sem-resultados" id="mensagem" style="display:none;">
+    Nenhuma confeiteira encontrada.
+</p>
+
+<script>
+function filtrar() {
+    let termo = document
+        .getElementById("pesquisa")
+        .value
+        .toLowerCase();
+
+    let cards = document.querySelectorAll(".card");
+
+    let encontrou = false;
+
+    cards.forEach(function(card) {
+        let texto = card.dataset.search;
+
+        if (texto.includes(termo)) {
+            card.style.display = "block";
+            encontrou = true;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    document.getElementById("mensagem").style.display =
+        encontrou ? "none" : "block";
+}
+
+function copiarListaWhatsApp() {
+    let cards = document.querySelectorAll(".card");
+    let textoFinal = "*🍰 EVOLUÇÃO DA NOSSA LISTA DE PARCEIRAS 🍰*\n\n";
+    let contador = 0;
+
+    cards.forEach(function(card) {
+        // Só adiciona na lista se o card estiver visível no momento
+        if (card.style.display !== "none") {
+            let nome = card.dataset.nome;
+            let insta = card.dataset.insta;
+            contador++;
+            textoFinal += contador + ") *" + nome + "* - " + insta + "\n";
+        }
+    });
+
+    if (contador === 0) {
+        alert("Nenhuma confeiteira na lista para copiar!");
+        return;
+    }
+
+    textoFinal += "\n✨ Venha fazer parte você também!";
+
+    // Copia para a área de transferência usando a API do navegador
+    navigator.clipboard.writeText(textoFinal).then(function() {
+        alert("📋 Lista copiada com sucesso! Agora é só dar Ctrl+V (ou colar) no WhatsApp.");
+    }).catch(function(err) {
+        alert("Erro ao copiar texto: " + err);
+    });
+}
+</script>
+
+</body>
+</html>
