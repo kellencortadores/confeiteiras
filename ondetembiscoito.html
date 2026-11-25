@@ -30,8 +30,8 @@ header p{max-width:560px;margin:0 auto;color:#4a3a58}
 .cid{color:var(--sub);font-size:.85rem;margin:2px 0 8px}
 .tag{display:inline-block;font-size:.75rem;font-weight:600;background:#fce7f3;color:#be185d;padding:3px 12px;border-radius:999px;margin-bottom:10px}
 @media (prefers-color-scheme:dark){.tag{background:#4a2140;color:#f9a8d4}}
-.desc{font-size:.88rem;color:var(--sub);margin-bottom:16px;min-height:2.6em}
-.bt{display:flex;flex-direction:column;gap:8px}
+.desc{font-size:.88rem;color:var(--sub);margin-top:8px}
+.bt{display:flex;flex-direction:column;gap:8px;margin-top:16px}
 .bt a{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;border-radius:14px;text-decoration:none;font-weight:600;font-size:.9rem;transition:.15s}
 .bt a:hover{filter:brightness(1.08)}
 .ig{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);color:#fff}
@@ -54,7 +54,7 @@ svg{width:18px;height:18px;fill:currentColor}
 </header>
 
 <div class="busca">
-  <input id="q" type="search" placeholder="Buscar por nome ou tema do biscoito…" aria-label="Buscar">
+  <input id="q" type="search" placeholder="Buscar por nome…" aria-label="Buscar">
   <select id="cidade" aria-label="Cidade"><option value="">Todas as cidades</option></select>
 </div>
 
@@ -73,7 +73,8 @@ svg{width:18px;height:18px;fill:currentColor}
 
 <script>
 /* ============================================================
-   EDITE AQUI. Para adicionar uma biscoiteira, copie um bloco {...}
+   EDITE AQUI. Para adicionar uma biscoiteira, copie uma linha {...}
+   (só "nome" é obrigatório; o que ficar de fora simplesmente não aparece)
    - nome:      nome da biscoiteira ou do ateliê
    - cidade:    ex.: "São José dos Campos, SP"
    - instagram: só o @ sem o arroba, ex.: "mariana.doces"
@@ -84,9 +85,11 @@ svg{width:18px;height:18px;fill:currentColor}
 const MEU_WHATSAPP = "12900000000"; // seu número para o botão "Falar comigo"
 
 const CONFEITEIRAS = [
-  {nome:"Mariana Doces",  cidade:"São José dos Campos, SP", instagram:"exemplo1", whatsapp:"12900000001", especialidade:"Biscoitos infantis",   descricao:"Biscoitos decorados para festas, feitos com muito carinho.", foto:""},
-  {nome:"Ateliê da Ana",  cidade:"São José dos Campos, SP", instagram:"exemplo2", whatsapp:"12900000002", especialidade:"Biscoitos florais",    descricao:"Biscoitos delicados e elegantes para ocasiões especiais.", foto:""},
-  {nome:"Biscoitos da Lu",cidade:"Jacareí, SP",             instagram:"exemplo3", whatsapp:"12900000003", especialidade:"Biscoitos decorados", descricao:"Biscoitos e lembrancinhas personalizados.", foto:""}
+  {nome:"Joziane Fagundes da Silva",       instagram:"fornodevo_biscoitos"},
+  {nome:"Telma Claudia de Campos Godoy",   instagram:"nhaconstanca_doces"},
+  {nome:"Chris Rached",                    instagram:"afetoedocurasjc"},
+  {nome:"Evelyn Oliveira",                 instagram:"evelynxoliveira"},
+  {nome:"Elizangela Euzébio",              instagram:"eliz.cookier"}
 ];
 /* ============================================================ */
 
@@ -97,9 +100,11 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 
-[...new Set(CONFEITEIRAS.map(c => c.cidade))].sort().forEach(c => {
+const CIDADES = [...new Set(CONFEITEIRAS.map(c => c.cidade).filter(Boolean))].sort();
+CIDADES.forEach(c => {
   const o = document.createElement('option'); o.value = c; o.textContent = c; $('cidade').appendChild(o);
 });
+if (!CIDADES.length) $('cidade').style.display = 'none';
 
 function card(c){
   const av = c.foto ? `<img class="av" src="${esc(c.foto)}" alt="Foto de ${esc(c.nome)}" loading="lazy">`
@@ -107,15 +112,15 @@ function card(c){
   const ig = c.instagram ? `<a class="ig" href="https://instagram.com/${esc(c.instagram.replace('@',''))}" target="_blank" rel="noopener">${IG} Ver o trabalho no Instagram</a>` : '';
   const msg = encodeURIComponent('Olá, ' + c.nome + '! Vi seu trabalho no site Onde tem biscoito? e gostaria de um orçamento.');
   const wa = c.whatsapp ? `<a class="wa" href="https://wa.me/55${esc(c.whatsapp.replace(/\D/g,''))}?text=${msg}" target="_blank" rel="noopener">${WA} Pedir orçamento</a>` : '';
-  return `<article class="card">${av}<h2>${esc(c.nome)}</h2><p class="cid">📍 ${esc(c.cidade)}</p>
+  return `<article class="card">${av}<h2>${esc(c.nome)}</h2>${c.cidade ? `<p class="cid">📍 ${esc(c.cidade)}</p>` : ''}
     ${c.especialidade ? `<span class="tag">${esc(c.especialidade)}</span>` : ''}
-    <p class="desc">${esc(c.descricao || '')}</p><div class="bt">${ig}${wa}</div></article>`;
+    ${c.descricao ? `<p class="desc">${esc(c.descricao)}</p>` : ''}<div class="bt">${ig}${wa}</div></article>`;
 }
 
 function render(){
   const q = norm($('q').value.trim()), cid = $('cidade').value;
   const lista = CONFEITEIRAS.filter(c => (!cid || c.cidade === cid) &&
-    (!q || norm([c.nome, c.especialidade, c.descricao, c.cidade].join(' ')).includes(q)));
+    (!q || norm([c.nome, c.especialidade, c.descricao, c.cidade, c.instagram].filter(Boolean).join(' ')).includes(q)));
   $('cont').textContent = lista.length + (lista.length === 1 ? ' biscoiteira' : ' biscoiteiras');
   $('grid').innerHTML = lista.length ? lista.map(card).join('') : '<p class="vazio">Nenhuma biscoiteira encontrada. Tente outra busca.</p>';
 }
