@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cadastro – Onde tem biscoito?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--rosa:#ec4899;--roxo:#8b5cf6;--bg:#fff7fb;--card:#fff;--txt:#2d2036;--sub:#6b5b78;--borda:#f5d9e8}
+@media (prefers-color-scheme:dark){:root{--bg:#1c1423;--card:#2a1f33;--txt:#f6eefa;--sub:#b9a8c7;--borda:#3d2d4a}}
+*{box-sizing:border-box;margin:0}
+body{font-family:Poppins,system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.5}
+header{background:linear-gradient(135deg,#fbcfe8,#ddd6fe);padding:48px 20px 64px;text-align:center;color:#2d2036}
+.logo{font-family:Pacifico,cursive;font-weight:400;line-height:1.2;font-size:clamp(2rem,7vw,3rem);background:linear-gradient(90deg,#db2777,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
+header p{max-width:520px;margin:12px auto 0;color:#4a3a58}
+main{max-width:560px;margin:-36px auto 48px;padding:0 20px}
+form{background:var(--card);border:1px solid var(--borda);border-radius:24px;padding:28px 24px;box-shadow:0 10px 30px rgba(236,72,153,.15)}
+.campo{margin-bottom:18px}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
+.dica{font-weight:400;color:var(--sub);font-size:.8rem}
+input[type=text],input[type=tel],select,textarea{width:100%;border:1px solid var(--borda);background:var(--bg);color:var(--txt);padding:12px 16px;border-radius:14px;font:inherit;font-size:.95rem}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--rosa)}
+.linha{display:grid;grid-template-columns:1fr 110px;gap:12px}
+.aceite{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--sub);margin-bottom:20px}
+.aceite input{margin-top:4px;accent-color:var(--rosa);width:18px;height:18px;flex:none}
+button{width:100%;border:0;cursor:pointer;background:linear-gradient(135deg,var(--rosa),var(--roxo));color:#fff;font:inherit;font-weight:600;font-size:1rem;padding:14px;border-radius:999px;transition:.15s}
+button:hover{filter:brightness(1.08)}
+button:disabled{opacity:.6;cursor:wait}
+#msg{margin-top:16px;text-align:center;font-size:.92rem;font-weight:500}
+#msg.ok{color:#16a34a}
+#msg.erro{color:#dc2626}
+.hp{display:none}
+footer{text-align:center;color:var(--sub);font-size:.8rem;padding:0 20px 36px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="logo">Quero aparecer!</h1>
+  <p>Faz biscoito decorado? Preencha seus dados para entrar na vitrine do <strong>Onde tem biscoito?</strong>. É de graça.</p>
+</header>
+
+<main>
+  <form id="form" novalidate>
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+    <div class="campo">
+      <label for="nome">Seu nome ou nome do ateliê</label>
+      <input type="text" id="nome" name="nome" required autocomplete="name">
+    </div>
+
+    <div class="campo">
+      <label for="instagram">Instagram <span class="dica">(pode colar o @ ou o link do perfil)</span></label>
+      <input type="text" id="instagram" name="instagram" required placeholder="@seuperfil" autocapitalize="none" autocomplete="off">
+    </div>
+
+    <div class="campo">
+      <label for="telefone">Telefone com WhatsApp <span class="dica">(com DDD)</span></label>
+      <input type="tel" id="telefone" name="telefone" required placeholder="(12) 99999-8888" autocomplete="tel">
+    </div>
+
+    <div class="linha campo">
+      <div>
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" name="cidade" required autocomplete="address-level2">
+      </div>
+      <div>
+        <label for="estado">Estado</label>
+        <select id="estado" name="estado" required>
+          <option value="">UF</option>
+          <option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option>
+          <option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option>
+          <option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option>
+          <option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+          <option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option>
+          <option>SE</option><option>TO</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="campo">
+      <label for="descricao">O que mais você faz? <span class="dica">(conte em poucas palavras)</span></label>
+      <textarea id="descricao" name="descricao" required maxlength="300" placeholder="Ex.: biscoitos decorados para festas infantis, lembrancinhas e kits personalizados."></textarea>
+    </div>
+
+    <label class="aceite" for="aceite">
+      <input type="checkbox" id="aceite" name="autorizacao" value="Sim" required>
+      <span>Autorizo divulgar meu nome, Instagram e WhatsApp no site Onde tem biscoito?.</span>
+    </label>
+
+    <button type="submit" id="enviar">Enviar cadastro</button>
+    <p id="msg" role="status" aria-live="polite"></p>
+  </form>
+</main>
+
+<footer>Seus dados só aparecem no site depois de uma conferência.</footer>
+
+<script>
+/* ============================================================
+   COLE AQUI a chave que a Web3Forms mandou para o seu e-mail.
+   (Essa chave pode ficar pública, ela só permite ENVIAR para você.)
+   ============================================================ */
+const ACCESS_KEY = "COLE_SUA_CHAVE_AQUI";
+
+const $ = id => document.getElementById(id);
+const form = $('form'), msg = $('msg'), btn = $('enviar');
+
+/* máscara simples do telefone: (12) 99999-8888 */
+$('telefone').addEventListener('input', e => {
+  let d = e.target.value.replace(/\D/g, '');
+  if (d.startsWith('55') && d.length > 11) d = d.slice(2);
+  d = d.slice(0, 11);
+  e.target.value = d.length > 7 ? `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`
+                 : d.length > 2 ? `(${d.slice(0,2)}) ${d.slice(2)}`
+                 : d;
+});
+
+const limpaInsta = s => s.trim()
+  .replace(/^https?:\/\/(www\.)?instagram\.com\//i, '')
+  .replace(/[/?#].*$/, '')
+  .replace(/^@/, '');
+
+const q = s => JSON.stringify(s); // aspas e acentos já protegidos para colar no catálogo
+
+function mostra(texto, tipo){ msg.textContent = texto; msg.className = tipo || ''; }
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  if (ACCESS_KEY === 'COLE_SUA_CHAVE_AQUI') { mostra('A chave da Web3Forms ainda não foi colocada no arquivo.', 'erro'); return; }
+
+  const nome = $('nome').value.trim();
+  const instagram = limpaInsta($('instagram').value);
+  const fone = $('telefone').value.replace(/\D/g, '');
+  const cidade = $('cidade').value.trim();
+  const estado = $('estado').value;
+  const descricao = $('descricao').value.trim();
+
+  if (fone.length < 10) { mostra('Confira o telefone: precisa do DDD.', 'erro'); $('telefone').focus(); return; }
+  if (!instagram) { mostra('Confira o Instagram.', 'erro'); $('instagram').focus(); return; }
+
+  const dados = {
+    access_key: ACCESS_KEY,
+    subject: 'Novo cadastro: ' + nome,
+    from_name: 'Onde tem biscoito?',
+    botcheck: form.botcheck.checked,
+    nome, instagram: '@' + instagram, telefone: fone, cidade, estado, descricao,
+    autorizacao: 'Sim',
+    /* linha pronta para colar na lista CONFEITEIRAS do catálogo */
+    linha_para_o_catalogo: `{nome:${q(nome)}, cidade:${q(cidade + ', ' + estado)}, instagram:${q(instagram)}, whatsapp:${q(fone)}, descricao:${q(descricao)}},`
+  };
+
+  btn.disabled = true; mostra('Enviando…');
+  try {
+    const r = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(dados)
+    });
+    const j = await r.json();
+    if (r.ok && j.success !== false) {
+      form.reset();
+      mostra('Cadastro enviado! Obrigada. Em breve conferimos e colocamos seu trabalho na vitrine.', 'ok');
+    } else {
+      mostra(j.message || 'Não foi possível enviar. Tente de novo em instantes.', 'erro');
+    }
+  } catch (err) {
+    mostra('Sem conexão. Tente de novo em instantes.', 'erro');
+  }
+  btn.disabled = false;
+});
+</script>
+</body>
+</html>
