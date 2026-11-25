@@ -149,8 +149,8 @@ form.addEventListener('submit', async e => {
     botcheck: form.botcheck.checked,
     nome, instagram: '@' + instagram, telefone: fone, cidade, estado, descricao,
     autorizacao: 'Sim',
-    /* linha pronta para colar na lista CONFEITEIRAS do catálogo */
-    linha_para_o_catalogo: `{nome:${q(nome)}, cidade:${q(cidade + ', ' + estado)}, instagram:${q(instagram)}, whatsapp:${q(fone)}, descricao:${q(descricao)}},`
+        /* JSON de uma linha: no programa Confeiteiras_Parceiras.py use "Colar cadastro do e-mail" */
+    linha_para_o_catalogo: JSON.stringify({nome, instagram, whatsapp: fone, cidade: cidade + ', ' + estado, descricao})
   };
 
   btn.disabled = true; mostra('Enviando…');

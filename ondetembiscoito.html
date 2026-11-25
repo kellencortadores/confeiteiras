@@ -28,14 +28,16 @@ header p{max-width:560px;margin:0 auto;color:#4a3a58}
 .av{width:88px;height:88px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--rosa),var(--roxo));object-fit:cover;border:4px solid var(--borda)}
 .card h2{font-size:1.15rem}
 .cid{color:var(--sub);font-size:.85rem;margin:2px 0 8px}
+.cid.pend{opacity:.6;font-style:italic}
 .tag{display:inline-block;font-size:.75rem;font-weight:600;background:#fce7f3;color:#be185d;padding:3px 12px;border-radius:999px;margin-bottom:10px}
 @media (prefers-color-scheme:dark){.tag{background:#4a2140;color:#f9a8d4}}
 .desc{font-size:.88rem;color:var(--sub);margin-top:8px}
 .bt{display:flex;flex-direction:column;gap:8px;margin-top:16px}
-.bt a{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;border-radius:14px;text-decoration:none;font-weight:600;font-size:.9rem;transition:.15s}
+.bt a,.bt .off{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;border-radius:14px;text-decoration:none;font-weight:600;font-size:.9rem;transition:.15s}
 .bt a:hover{filter:brightness(1.08)}
 .ig{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);color:#fff}
 .wa{background:#22c55e;color:#fff}
+.off{background:var(--borda);color:var(--sub)}
 .vazio{grid-column:1/-1;text-align:center;color:var(--sub);padding:40px 0}
 .cta{background:linear-gradient(135deg,#fbcfe8,#ddd6fe);color:#2d2036;border-radius:28px;padding:36px 24px;text-align:center;margin-bottom:48px}
 .cta h3{font-size:1.3rem;margin-bottom:6px}
@@ -72,26 +74,445 @@ svg{width:18px;height:18px;fill:currentColor}
 <footer>Feito com carinho para divulgar o trabalho de quem faz biscoito. © <span id="ano"></span> Onde tem biscoito?</footer>
 
 <script>
-/* ============================================================
-   EDITE AQUI. Para adicionar uma biscoiteira, copie uma linha {...}
-   (só "nome" é obrigatório; o que ficar de fora simplesmente não aparece)
-   - nome:      nome da biscoiteira ou do ateliê
-   - cidade:    ex.: "São José dos Campos, SP"
-   - instagram: só o @ sem o arroba, ex.: "mariana.doces"
-   - whatsapp:  só números com DDD, ex.: "12999998888"
-   - especialidade e descricao: curtinhos
-   - foto:      opcional, nome do arquivo na pasta "fotos", ex.: "fotos/mariana.jpg"
-   ============================================================ */
-const MEU_WHATSAPP = "12900000000"; // seu número para o botão "Falar comigo"
-
+/* ARQUIVO GERADO por Confeiteiras_Parceiras.py. Não edite aqui:
+   altere pelo programa (ou no .json) e gere de novo. */
+const MEU_WHATSAPP = "5512900000000"; // número completo, 55 + DDD + número
 const CONFEITEIRAS = [
-  {nome:"Joziane Fagundes da Silva",       instagram:"fornodevo_biscoitos"},
-  {nome:"Telma Claudia de Campos Godoy",   instagram:"nhaconstanca_doces"},
-  {nome:"Chris Rached",                    instagram:"afetoedocurasjc"},
-  {nome:"Evelyn Oliveira",                 instagram:"evelynxoliveira"},
-  {nome:"Elizangela Euzébio",              instagram:"eliz.cookier"}
+  {
+    "nome": "Adriana Jordão",
+    "instagram": "drikajordao",
+    "whatsapp": "5535999020825",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Adriana Suvobida Nascimento",
+    "instagram": "deliciada_driika",
+    "whatsapp": "5521998589942",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Agnes Letícia Graziano",
+    "instagram": "alegracookiesecakes",
+    "whatsapp": "5511992727386",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Ana Maria Lara da Silva Cebulla",
+    "instagram": "biscoitos.coloridos",
+    "whatsapp": "5541998616277",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Ana Paula Cruz Machado",
+    "instagram": "docevidabiscoitaria",
+    "whatsapp": "5512991897427",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Anahy de Farias Pereira",
+    "instagram": "balademanteiga",
+    "whatsapp": "5581997506630",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Andréa Sanches",
+    "instagram": "docuradebiscoito",
+    "whatsapp": "5511953247273",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Angela Maria Hugentobler",
+    "instagram": "angelabiscoitos",
+    "whatsapp": "5551992123369",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Antonella Sartori",
+    "instagram": "cookiesbyanto",
+    "whatsapp": "5511999746270",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Bete Martins",
+    "instagram": "cupcakemariacozinha",
+    "whatsapp": "5511991567618",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Carina Mazucato",
+    "instagram": "mazucookies.br",
+    "whatsapp": "5511999141258",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Carla Correa",
+    "instagram": "biscoiteriacarlacorrea",
+    "whatsapp": "5511981216800",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Carla Cristina da Cruz Gouveia",
+    "instagram": "carlabiscoitosdecorados",
+    "whatsapp": "5519996742604",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Carol Campos",
+    "instagram": "carolitasbiscoiteria",
+    "whatsapp": "5511968758760",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Chris Rached",
+    "instagram": "afetoedocurasjc",
+    "whatsapp": "5512997178466",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Cintia Moraes",
+    "instagram": "smcdoces",
+    "whatsapp": "5512981642193",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Daiane Petreca",
+    "instagram": "daianepetreca",
+    "whatsapp": "à cadastrar",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Dani Alvarenga André",
+    "instagram": "niceedaniconfeitariaartesanal",
+    "whatsapp": "5535998854140",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Daniela Haller",
+    "instagram": "danihaller.atelie",
+    "whatsapp": "5512982404031",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Denise Choairy",
+    "instagram": "dolcealfajorhomemade",
+    "whatsapp": "5512991090493",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Elaine Laet",
+    "instagram": "biscoiteiraelainelaet",
+    "whatsapp": "5512988631349",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Eliana Pereira de Lima",
+    "instagram": "EPLDocesArtesanais",
+    "whatsapp": "à cadastrar",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Eliane Catapan",
+    "instagram": "elianecatapan",
+    "whatsapp": "5541999753357",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Elizangela Euzébio",
+    "instagram": "eliz.cookier",
+    "whatsapp": "5511974445332",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Evandra Auxiliadora de Oliveira",
+    "instagram": "confestgyn",
+    "whatsapp": "5562981612068",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Evelyn Oliveira",
+    "instagram": "evelynxoliveira",
+    "whatsapp": "5511998389031",
+    "cidade": "Santa Isabel, SP"
+  },
+  {
+    "nome": "Fernanda Vargas",
+    "instagram": "celebrarbiscoitosdecorados",
+    "whatsapp": "5592981746885",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Gabriela Cristina Campos de Souza",
+    "instagram": "maricotinha.biscoitos",
+    "whatsapp": "5512988333927",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Graça Cesarotto",
+    "instagram": "graca_cookier_glutenfree",
+    "whatsapp": "5547999770846",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Gracieli Sanches",
+    "instagram": "gracielisanches",
+    "whatsapp": "5514981170664",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Iolanda Boff",
+    "instagram": "fadinhabiscoiteria",
+    "whatsapp": "5551991688099",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Ivany Kumeda",
+    "instagram": "ivanykumeda",
+    "whatsapp": "5511991695591",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Jéssica Nascimento",
+    "instagram": "doce_margariida",
+    "whatsapp": "à cadastrar",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Josinéia Nóbrega",
+    "instagram": "josineia_nobrega",
+    "whatsapp": "5511957407053",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Joyce Piratello Pansutti Zoppi",
+    "instagram": "joycookieoficial",
+    "whatsapp": "5512988482726",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Joziane Fagundes da Silva",
+    "instagram": "fornodevo_biscoitos",
+    "whatsapp": "5555999343428",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Juliana Alves",
+    "instagram": "ajucarado",
+    "whatsapp": "à cadastrar",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Juliana Buzzeiro Pelosi",
+    "instagram": "bisc8daju",
+    "whatsapp": "5511988558393",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Katia Dantas",
+    "instagram": "meusamoresconfeitaria",
+    "whatsapp": "5512988322451",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Lilliam Maria de Almeida",
+    "instagram": "meubiscoitinho.artesanal",
+    "whatsapp": "5511982387851",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Lucia Lopes",
+    "instagram": "lulopesdoces",
+    "whatsapp": "5511981117030",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Lucilene Borges",
+    "instagram": "biscoitosnininha",
+    "whatsapp": "5512988013312",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Marcia Donini",
+    "instagram": "bolachasdamarcia",
+    "whatsapp": "5541999955147",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Maria Aparecida de Souza Teixeira",
+    "instagram": "souzateixeir",
+    "whatsapp": "5512981356232",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Maria de Fátima Alves Ferreira",
+    "instagram": "deliciasdafatima",
+    "whatsapp": "5541998787710",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Maria do Perpétuo Socorro Braga Fonseca",
+    "instagram": "manudorabiscoitos",
+    "whatsapp": "5592988448071",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Maria Elisa Mazer",
+    "instagram": "mali_confeitaria",
+    "whatsapp": "5516991902811",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Maria Iracema de Souza Mendonça",
+    "instagram": "docesdairacema",
+    "whatsapp": "5588996197503",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Mariana B. A. Pessoa",
+    "instagram": "derepentebiscoito",
+    "whatsapp": "5561999671884",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Mariana Bellini",
+    "instagram": "amare.biscoitos",
+    "whatsapp": "5511944400409",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Marilene Almeida Bueno",
+    "instagram": "marilenebuenodoces",
+    "whatsapp": "5544999675551",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Marli Inês Minosso",
+    "instagram": "bolachas_decoradas_marli",
+    "whatsapp": "5565999957809",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Méril Micheline Schmitt",
+    "instagram": "merilschmitt",
+    "whatsapp": "5555999919049",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Monique Oliveira Pires",
+    "instagram": "moniqueoliveira.cakedesigner",
+    "whatsapp": "5511945474243",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Nivea Ramalho",
+    "instagram": "simplesdesejochocoficial",
+    "whatsapp": "5511985880478",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Odalea Alcina Ferreira Rizzuti",
+    "instagram": "presentesdecomerjf",
+    "whatsapp": "5532984499571",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Patricia Turetti",
+    "instagram": "patricia_turetti",
+    "whatsapp": "5511961316583",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Paula",
+    "instagram": "hallmarkbiscoiteria",
+    "whatsapp": "à cadastrar",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Priscila Sochor",
+    "instagram": "atelie_sochor",
+    "whatsapp": "5519984269293",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Rachel Macedo",
+    "instagram": "quetalbiscoitos",
+    "whatsapp": "5511993356295",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Rejane Miranda",
+    "instagram": "biscoitosdarebh",
+    "whatsapp": "5531991622964",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Rosana Brito",
+    "instagram": "delicadezasdaro",
+    "whatsapp": "5512988217193",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Rosana Daro",
+    "instagram": "beijosdocesconfeitariadaro",
+    "whatsapp": "à cadastrar",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Rosângela Lima",
+    "instagram": "biscoitosdossonhos",
+    "whatsapp": "5582996220123",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Rosangela Sant'Anna",
+    "instagram": "robiscoiteria",
+    "whatsapp": "5548996417903",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Rozana de Mello Pinto",
+    "instagram": "biscoiterapiadanana",
+    "whatsapp": "5555999561462",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Silmara C Brandi",
+    "instagram": "maniasdebiscoitos",
+    "whatsapp": "5535991318957",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Simone Morais da Silva",
+    "instagram": "bolosdeliciasdabibi",
+    "whatsapp": "5511983280846",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Tatiana Morais",
+    "instagram": "biscoitathi",
+    "whatsapp": "5519982835370",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Tatiane Lima",
+    "instagram": "tati_lima_gourmet",
+    "whatsapp": "5533999882188",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Telma Claudia de Campos Godoy",
+    "instagram": "nhaconstanca_doces",
+    "whatsapp": "5511999640363",
+    "cidade": "à cadastrar"
+  },
+  {
+    "nome": "Viviane Casarotti",
+    "instagram": "vivisbiscoitos",
+    "whatsapp": "5511980496130",
+    "cidade": "à cadastrar"
+  }
 ];
-/* ============================================================ */
+
+const PEND = "à cadastrar";
 
 const IG = '<svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.2 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg>';
 const WA = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm-3 3.7c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 2.2.9 2.6.7 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3l-1.6-.8c-.2-.1-.4-.1-.6.1l-.7.9c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.8-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.6-.4z"/></svg>';
@@ -99,8 +520,11 @@ const WA = '<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const ok = v => !!v && norm(String(v)).trim() !== 'a cadastrar';
+/* wa.me/<55><DDD><número>: só dígitos, sempre com o 55 na frente */
+const waNum = n => { const d = String(n).replace(/\D/g,''); return d.length >= 12 && d.startsWith('55') ? d : '55' + d; };
 
-const CIDADES = [...new Set(CONFEITEIRAS.map(c => c.cidade).filter(Boolean))].sort();
+const CIDADES = [...new Set(CONFEITEIRAS.map(c => c.cidade).filter(ok))].sort((a,b) => a.localeCompare(b,'pt-BR'));
 CIDADES.forEach(c => {
   const o = document.createElement('option'); o.value = c; o.textContent = c; $('cidade').appendChild(o);
 });
@@ -109,10 +533,13 @@ if (!CIDADES.length) $('cidade').style.display = 'none';
 function card(c){
   const av = c.foto ? `<img class="av" src="${esc(c.foto)}" alt="Foto de ${esc(c.nome)}" loading="lazy">`
                     : `<div class="av" aria-hidden="true">${esc(c.nome.trim()[0] || '?')}</div>`;
-  const ig = c.instagram ? `<a class="ig" href="https://instagram.com/${esc(c.instagram.replace('@',''))}" target="_blank" rel="noopener">${IG} Ver o trabalho no Instagram</a>` : '';
+  const ig = ok(c.instagram) ? `<a class="ig" href="https://instagram.com/${esc(c.instagram.replace('@',''))}" target="_blank" rel="noopener">${IG} Ver o trabalho no Instagram</a>` : '';
   const msg = encodeURIComponent('Olá, ' + c.nome + '! Vi seu trabalho no site Onde tem biscoito? e gostaria de um orçamento.');
-  const wa = c.whatsapp ? `<a class="wa" href="https://wa.me/55${esc(c.whatsapp.replace(/\D/g,''))}?text=${msg}" target="_blank" rel="noopener">${WA} Pedir orçamento</a>` : '';
-  return `<article class="card">${av}<h2>${esc(c.nome)}</h2>${c.cidade ? `<p class="cid">📍 ${esc(c.cidade)}</p>` : ''}
+  const wa = ok(c.whatsapp)
+    ? `<a class="wa" href="https://wa.me/${waNum(c.whatsapp)}?text=${msg}" target="_blank" rel="noopener">${WA} Pedir orçamento</a>`
+    : `<span class="off">${WA} WhatsApp ${PEND}</span>`;
+  const cid = ok(c.cidade) ? `<p class="cid">📍 ${esc(c.cidade)}</p>` : `<p class="cid pend">📍 ${PEND}</p>`;
+  return `<article class="card">${av}<h2>${esc(c.nome)}</h2>${cid}
     ${c.especialidade ? `<span class="tag">${esc(c.especialidade)}</span>` : ''}
     ${c.descricao ? `<p class="desc">${esc(c.descricao)}</p>` : ''}<div class="bt">${ig}${wa}</div></article>`;
 }
@@ -120,13 +547,13 @@ function card(c){
 function render(){
   const q = norm($('q').value.trim()), cid = $('cidade').value;
   const lista = CONFEITEIRAS.filter(c => (!cid || c.cidade === cid) &&
-    (!q || norm([c.nome, c.especialidade, c.descricao, c.cidade, c.instagram].filter(Boolean).join(' ')).includes(q)));
+    (!q || norm([c.nome, c.especialidade, c.descricao, ok(c.cidade) ? c.cidade : '', c.instagram].filter(Boolean).join(' ')).includes(q)));
   $('cont').textContent = lista.length + (lista.length === 1 ? ' biscoiteira' : ' biscoiteiras');
   $('grid').innerHTML = lista.length ? lista.map(card).join('') : '<p class="vazio">Nenhuma biscoiteira encontrada. Tente outra busca.</p>';
 }
 $('q').addEventListener('input', render);
 $('cidade').addEventListener('change', render);
-$('cta-link').href = 'https://wa.me/55' + MEU_WHATSAPP + '?text=' + encodeURIComponent('Olá! Faço biscoitos e quero aparecer no Onde tem biscoito?');
+$('cta-link').href = 'https://wa.me/' + waNum(MEU_WHATSAPP) + '?text=' + encodeURIComponent('Olá! Faço biscoitos e quero aparecer no Onde tem biscoito?');
 $('ano').textContent = new Date().getFullYear();
 render();
 </script>
